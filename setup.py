@@ -5,14 +5,14 @@ with open("README.md") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="bencoder",
+    name="bendercoder",
     version="1.0",
     author="Manolis Tsoukalas",
     author_email="emmtsoukalas@gmail.com",
     description="Library for encoding and decoding bencode data.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/m19t12/bencoder",
+    url="https://github.com/m19t12/bendercoder",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
