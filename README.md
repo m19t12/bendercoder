@@ -28,37 +28,61 @@ pip install bendercoder
 ```
 
 ## Usage
-For decoding the integer number 10.
+For decoding and encoding the integer number 10.
 ```python
 # coding=utf-8
 from decoder import Decoder
+from encoder import Encoder
+
 decoder = Decoder(payload=b'i10e')
 decoded_value = decoder.decode()
 print(decoded_value)
+
+encoder = Encoder(payload=decoded_value)
+encoded_value = encoder.encode()
+print(encoded_value)
 ```
-For decoding the string foo.
+For decoding and encoding the string foo.
 ```python
 # coding=utf-8
 from decoder import Decoder
+from encoder import Encoder
+
 decoder = Decoder(payload=b'3:foo')
 decoded_value = decoder.decode()
 print(decoded_value)
+
+encoder = Encoder(payload=decoded_value)
+encoded_value = encoder.encode()
+print(encoded_value)
 ```
-For decoding the list [1, 2, 3, 'bar']
+For decoding and encoding the list [1, 2, 3, 'bar']
 ```python
 # coding=utf-8
 from decoder import Decoder
+from encoder import Encoder
+
 decoder = Decoder(payload=b'li1ei2ei3e3:bare')
 decoded_value = decoder.decode()
 print(decoded_value)
+
+encoder = Encoder(payload=decoded_value)
+encoded_value = encoder.encode()
+print(encoded_value)
 ```
 For decoding the dictionary {'test': 'foo', 'bar': 2}
 ```python
 # coding=utf-8
 from decoder import Decoder
+from encoder import Encoder
+
 decoder = Decoder(payload=b'd4:test3:foo3:bari2ee')
 decoded_value = decoder.decode()
 print(decoded_value)
+
+encoder = Encoder(payload=decoded_value)
+encoded_value = encoder.encode()
+print(encoded_value)
 ```
 
 ## Links
