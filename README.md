@@ -1,4 +1,4 @@
-## Bencoder
+## Bendercoder
 [![Build Status](https://travis-ci.org/m19t12/bencoder.svg?branch=master)](https://travis-ci.org/m19t12/bencoder)
 [![Coverage Status](https://coveralls.io/repos/github/m19t12/bencoder/badge.svg?branch=master)](https://coveralls.io/github/m19t12/bencoder?branch=master)
 
@@ -24,7 +24,7 @@ Description from [wikipedia](https://en.wikipedia.org/wiki/Bencode).
 
 ## Installing
 ```
-pip install bencoder
+pip install bendercoder
 ```
 
 ## Usage
