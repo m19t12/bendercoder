@@ -1,5 +1,5 @@
 ## Bendercoder
-[![Build Status](https://travis-ci.org/m19t12/bencoder.svg?branch=master)](https://travis-ci.org/m19t12/bencoder)
+[![Build Status](https://travis-ci.org/m19t12/bendercoder.svg?branch=master)](https://travis-ci.org/m19t12/bendercoder)
 [![Coverage Status](https://coveralls.io/repos/github/m19t12/bencoder/badge.svg?branch=master)](https://coveralls.io/github/m19t12/bencoder?branch=master)
 
 Library for encoding and decoding bencode data.
@@ -70,7 +70,7 @@ encoder = Encoder(payload=decoded_value)
 encoded_value = encoder.encode()
 print(encoded_value)
 ```
-For decoding the dictionary {'test': 'foo', 'bar': 2}
+For decoding and encoding the dictionary {'test': 'foo', 'bar': 2}
 ```python
 # coding=utf-8
 from decoder import Decoder
