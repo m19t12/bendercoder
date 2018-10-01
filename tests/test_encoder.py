@@ -10,7 +10,8 @@ def test_initialize_good_payload(encoder):
 
 def test_initialize_bad_payload(encoder):
     with pytest.raises(InvalidType,
-                       match="Type <class 'tuple'> is not supported. Supported types are int, str, list and dict."):
+                       match="Type <class 'tuple'> is not supported. "
+                             "Supported types are int, str, list, bytes and dict."):
         _encoder = encoder(payload=(1, 2))
 
 
