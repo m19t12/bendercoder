@@ -34,6 +34,15 @@ def test_string_good_values(payload, expected, encoder):
 
 
 @pytest.mark.parametrize("payload, expected", [
+    (b'test', b'4:test'),
+    (b'abcdefg', b'7:abcdefg')
+])
+def test_bytes_good_values(payload, expected, encoder):
+    _encoder = encoder(payload=payload)
+    assert _encoder.encode() == expected
+
+
+@pytest.mark.parametrize("payload, expected", [
     ({'test': 'foo', 'bar': 4}, b'd4:test3:foo3:bari4ee'),
     ({'test': [1, 2, 'foo']}, b'd4:testli1ei2e3:fooee')
 ])

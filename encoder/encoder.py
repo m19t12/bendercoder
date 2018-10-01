@@ -6,11 +6,11 @@ class Encoder:
     __slots__ = ('payload',)
 
     def __init__(self, payload):
-        if type(payload) in (int, str, list, dict):
+        if type(payload) in (int, str, list, dict, bytes):
             self.payload = payload
         else:
             raise InvalidType(
-                'Type {} is not supported. Supported types are int, str, list and dict.'.format(type(payload)))
+                'Type {} is not supported. Supported types are int, str, list, bytes and dict.'.format(type(payload)))
 
     def encode(self):
         return self.encode_payload(self.payload)
@@ -18,12 +18,14 @@ class Encoder:
     def encode_payload(self, payload):
         if isinstance(payload, int):
             return self.encode_integer(payload)
-        elif isinstance(payload, str) or isinstance(payload, bytes):
+        elif isinstance(payload, str):
             return self.encode_string(payload)
         elif isinstance(payload, list):
             return self.encode_list(payload)
         elif isinstance(payload, dict):
             return self.encode_dictionary(payload)
+        elif isinstance(payload, bytes):
+            return self.encode_bytes(payload)
 
     @staticmethod
     def encode_integer(payload):
@@ -33,6 +35,11 @@ class Encoder:
     def encode_string(payload):
         string_length = len(payload)
         return str.encode('{}:{}'.format(string_length, payload))
+
+    @staticmethod
+    def encode_bytes(payload):
+        string_length = str.encode(str(len(payload)))
+        return string_length + b':' + payload
 
     def encode_list(self, payload):
         list_items = bytearray('l', 'utf-8')
