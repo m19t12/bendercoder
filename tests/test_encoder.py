@@ -44,8 +44,8 @@ def test_bytes_good_values(payload, expected, encoder):
 
 
 @pytest.mark.parametrize("payload, expected", [
-    ({'test': 'foo', 'bar': 4}, b'd4:test3:foo3:bari4ee'),
-    ({'test': [1, 2, 'foo']}, b'd4:testli1ei2e3:fooee')
+    ({'test': 'foo', 'bar': 4}, bytearray(b'd4:test3:foo3:bari4ee')),
+    ({'test': [1, 2, 'foo']}, bytearray(b'd4:testli1ei2e3:fooee'))
 ])
 def test_dictionary_good_values(payload, expected, encoder):
     _encoder = encoder(payload=payload)
@@ -53,8 +53,8 @@ def test_dictionary_good_values(payload, expected, encoder):
 
 
 @pytest.mark.parametrize("payload, expected", [
-    ([1, 2, 3], b'li1ei2ei3ee'),
-    (['test', 'foo', 'bar'], b'l4:test3:foo3:bare')
+    ([1, 2, 3], bytearray(b'li1ei2ei3ee')),
+    (['test', 'foo', 'bar'], bytearray(b'l4:test3:foo3:bare'))
 ])
 def test_list_good_values(payload, expected, encoder):
     _encoder = encoder(payload=payload)
