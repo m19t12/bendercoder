@@ -43,12 +43,12 @@ def test_integer_payload_parse_value_error(decoder):
 
 
 @pytest.mark.parametrize("payload, expected", [
-    (b'4:abcd', b'abcd'),
-    (b'4:test', b'test'),
-    (b'3:foo', b'foo'),
-    (b'3:barfoo', b'bar'),
-    (b'0:a', b''),
-    (b'0:', b'')
+    (b'4:abcd', 'abcd'),
+    (b'4:test', 'test'),
+    (b'3:foo', 'foo'),
+    (b'3:barfoo', 'bar'),
+    (b'0:a', ''),
+    (b'0:', '')
 ])
 def test_string_good_payload(payload, expected, decoder):
     _decoder = decoder(payload=payload)
@@ -67,10 +67,15 @@ def test_string_payload_parse_string_length_value_error(decoder):
         _decoder.decode()
 
 
+def test_string_byte_sha1_byte(decoder):
+    _decoder = decoder(payload=b'74520:\xba \xb5\xa7-0%\xbb')
+    assert _decoder.decode() == b'\xba \xb5\xa7-0%\xbb'
+
+
 @pytest.mark.parametrize("payload, expected", [
     (b'li32ee', [32]),
-    (b'l4:testee', [b'test']),
-    (b'l4:eeeee', [b'eeee'])
+    (b'l4:testee', ['test']),
+    (b'l4:eeeee', ['eeee'])
 ])
 def test_list_good_payload(payload, expected, decoder):
     _decoder = decoder(payload=payload)
@@ -84,9 +89,9 @@ def test_list_bad_end_payload(decoder):
 
 
 @pytest.mark.parametrize("payload, expected", [
-    (b'd4:test3:fooe', {b'test': b'foo'}),
-    (b'd3:bari20ee', {b'bar': 20}),
-    (b'd3:bazli10ei5eee', {b'baz': [10, 5]})
+    (b'd4:test3:fooe', {'test': 'foo'}),
+    (b'd3:bari20ee', {'bar': 20}),
+    (b'd3:bazli10ei5eee', {'baz': [10, 5]})
 ])
 def test_dictionary_good_payload(payload, expected, decoder):
     _decoder = decoder(payload=payload)

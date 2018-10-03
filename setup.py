@@ -6,7 +6,7 @@ with open("README.md") as fh:
 
 setuptools.setup(
     name="bendercoder",
-    version="1.1.1",
+    version="1.2.1",
     author="Manolis Tsoukalas",
     author_email="emmtsoukalas@gmail.com",
     description="Library for encoding and decoding bencode data.",

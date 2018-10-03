@@ -126,7 +126,12 @@ class Decoder:
 
         self.index = hit + 1
 
-        value = self.payload[self.index:self.index + string_length]
+        try:
+            # if value can be decoded in utf-8 it means it is a string
+            value = self.payload[self.index:self.index + string_length].decode('utf-8')
+        except UnicodeDecodeError:
+            # if can't be decode it means is a byte representation (SHA1 hash values)
+            value = self.payload[self.index:self.index + string_length]
 
         self.index += string_length
 
