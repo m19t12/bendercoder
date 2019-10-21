@@ -11,6 +11,6 @@ pluggy==0.7.1
 py==1.6.0
 pytest==3.8.0
 pytest-cov==2.6.0
-requests==2.19.1
+requests>=2.20.0
 six==1.11.0
-urllib3==1.23
+urllib3>=1.24.2
